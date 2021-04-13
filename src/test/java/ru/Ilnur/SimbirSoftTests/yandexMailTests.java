@@ -21,7 +21,6 @@ public class yandexMailTests {
          mailPage = new mailPage(driver);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        driver.get(ConfProperties.getProperty("commonPage"));
         driver.get("https://yandex.ru/");
 
     }
