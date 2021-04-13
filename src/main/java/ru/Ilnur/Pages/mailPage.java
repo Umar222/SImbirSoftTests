@@ -17,9 +17,26 @@ public class mailPage {
     @FindBy(xpath = "//div[text() = \"Войти\"]")
     private WebElement openMailButton;
 
+    @FindBy(xpath = "//input[@id = \"passp-field-login\"]")
+    private WebElement loginField;
 
-    public void openMail(){
+    @FindBy(xpath = "//input[@id = \"passp-field-passwd\"]")
+    private WebElement passwordField;
+
+    @FindBy(xpath = "//button[@type = \"submit\"]")
+    private WebElement submit;
+
+    public void clickEnter(){
         openMailButton.click();
+    }
+
+
+    public void openMail(String mail, String password){
+        loginField.sendKeys(mail);
+        loginField.submit();
+        passwordField.sendKeys(password);
+        submit.click();
+
     }
 
 }
