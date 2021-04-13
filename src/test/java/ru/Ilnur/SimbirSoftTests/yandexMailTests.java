@@ -5,8 +5,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import ru.Ilnur.Pages.CalculatorPage;
-import ru.Ilnur.Pages.SearchPage;
 import ru.Ilnur.Pages.mailPage;
 
 import java.util.concurrent.TimeUnit;
@@ -29,8 +27,9 @@ public class yandexMailTests {
     }
 
     @Test
-    public void openMail() {
-        mailPage.openMail();
+    public void openMailTest() {
+        mailPage.clickEnter();
+        mailPage.openMail("testovumar@yandex.ru", "qwertY116");
     }
 
     @AfterAll
