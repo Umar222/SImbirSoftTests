@@ -5,11 +5,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class mailPage {
 
     public WebDriver driver;
 
-    public mailPage(WebDriver driver){
+    public mailPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
@@ -26,12 +28,27 @@ public class mailPage {
     @FindBy(xpath = "//button[@type = \"submit\"]")
     private WebElement submit;
 
-    public void clickEnter(){
+    @FindBy(xpath = "//a[@href=\"https://mail.yandex.ru/\"]")
+    private WebElement mailButton;
+
+    @FindBy(xpath = "//input[@placeholder=\"Поиск\"]")
+    private WebElement searchField;
+
+    @FindBy(xpath = "//span[@class=\"mail-MessageSnippet-Item mail-MessageSnippet-Item_subject\"]")
+    public List<WebElement> messageTheme;
+
+
+
+
+    public void openMailWindow() {
+        mailButton.click();
+    }
+
+    public void clickEnter() {
         openMailButton.click();
     }
 
-
-    public void openMail(String mail, String password){
+    public void openMail(String mail, String password) {
         loginField.sendKeys(mail);
         loginField.submit();
         passwordField.sendKeys(password);
