@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.Ilnur.Pages.General;
 import ru.Ilnur.Pages.MailAuthPage;
 import ru.Ilnur.Pages.MailPage;
 
@@ -15,19 +16,18 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class YandexMailTests {
+public class YandexMailTests{
 
     public static WebDriver driver = new ChromeDriver();
     static MailAuthPage mailAuthPage;
     static MailPage mailPage;
+    static General general;
 
-    public void switchNewPage(int pageNumber) {
-        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
-        driver.switchTo().window(tabs2.get(pageNumber));
-    }
+
 
     @BeforeAll
     public static void setUp() {
+        general = new General(driver);
         mailAuthPage = new MailAuthPage(driver);
         mailPage = new MailPage(driver);
         driver.manage().window().maximize();
@@ -42,7 +42,7 @@ public class YandexMailTests {
     @Description("Проверка отображения нового письма")
     @Test
     public void checkAddingNewMessage() {
-            switchNewPage(1);
+            General.switchNewPage(1);
             int count1 = mailPage.mailCount("Simbirsoft theme");
             System.out.println("Найдено " + count1 + " писем\\ьма");
             mailPage.newMessage();
