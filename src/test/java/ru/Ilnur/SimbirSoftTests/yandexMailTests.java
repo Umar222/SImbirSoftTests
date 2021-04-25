@@ -15,12 +15,11 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class YandexMailTests{
+public class YandexMailTests {
 
     public static WebDriver driver = new ChromeDriver();
     static MailAuthPage mailAuthPage;
     static MailPage mailPage;
-    int n;
 
     public void switchNewPage(int pageNumber) {
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
@@ -43,24 +42,17 @@ public class YandexMailTests{
     @Description("Проверка отображения нового письма")
     @Test
     public void checkAddingNewMessage() {
-
-        switchNewPage(1);
-        int n = mailPage.mailCount("Simbirsoft theme");
-        System.out.println("Найдено " + n + " писем\\ьма");
-
-        mailPage.newMessage();
-        mailPage.addMailAddress("testovumar@yandex.ru", "Simbirsoft theme");
-        mailPage.sendMessage();
-        assertEquals(mailPage.modalTitle().getText(), "Письмо отправлено");
-
-        driver.navigate().refresh();
-
-        int count = mailPage.mailCount("Simbirsoft theme");
-
-        assertTrue(count > n);
-
+            switchNewPage(1);
+            int count1 = mailPage.mailCount("Simbirsoft theme");
+            System.out.println("Найдено " + count1 + " писем\\ьма");
+            mailPage.newMessage();
+            mailPage.addMailAddress("testovumar@yandex.ru", "Simbirsoft theme");
+            mailPage.sendMessage();
+            assertEquals(mailPage.modalTitle().getText(), "Письмо отправлено", "Текст не отобразился");
+            driver.navigate().refresh();
+            int count2 = mailPage.mailCount("Simbirsoft theme");
+            assertTrue(count2 > count1,"Новое письмо не создалось");
     }
-
 
     @AfterAll
     public static void tearDown() {
