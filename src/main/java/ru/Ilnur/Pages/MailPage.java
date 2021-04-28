@@ -6,19 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MailPage {
 
     @FindBy(xpath = "//div[text() = \"Войти\"]")
     private WebElement openMailButton;
-    @FindBy(xpath = "//input[@id = \"passp-field-login\"]")
-    private WebElement loginField;
-    @FindBy(xpath = "//input[@id = \"passp-field-passwd\"]")
-    private WebElement passwordField;
-    @FindBy(xpath = "//button[@type = \"submit\"]")
-    private WebElement submit;
     @FindBy(xpath = "//a[@href=\"https://mail.yandex.ru/\"]")
     private WebElement mailButton;
     @FindBy(xpath = "//input[@placeholder=\"Поиск\"]")
@@ -33,7 +26,7 @@ public class MailPage {
     private WebElement emailThemeField;
     @FindBy(xpath = "//button[@class = \"control button2 button2_view_default button2_tone_default button2_size_l button2_theme_action button2_pin_circle-circle ComposeControlPanelButton-Button ComposeControlPanelButton-Button_action\"]")
     private WebElement sendMessageButton;
-    @FindBy(xpath = "//span[text() = \"Письмо отправлено\"]")
+    @FindBy(xpath = "//div[@class=\"ComposeDoneScreen-Title\"]")
     private WebElement modalWindowTitle;
 
     public WebDriver driver;
@@ -74,18 +67,15 @@ public class MailPage {
         openMailButton.click();
     }
 
-    @Step("Авторизация на почте")
-    public void openMail(String mail, String password) {
-        loginField.sendKeys(mail);
-        loginField.submit();
-        passwordField.sendKeys(password);
-        submit.click();
+    @Step("Считаю количество писем с темой ")
+    public int mailCount(String mailTheme) {
+        int count = 0;
+        for (WebElement title : messageTheme) {
+            if (title.getText().equals(mailTheme))
+                count++;
+        }
+        return count;
     }
 
-    @Step("Переход на новую вкладку")
-    public void switchNewPage(int pageNumber) {
-        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
-        driver.switchTo().window(tabs2.get(pageNumber));
-    }
 
 }
