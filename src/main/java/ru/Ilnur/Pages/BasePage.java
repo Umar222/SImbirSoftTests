@@ -5,13 +5,13 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
 
-public class General {
+public class BasePage {
 
     public static WebDriver driver;
 
-    public General(WebDriver driver){
+    public BasePage(WebDriver driver){
         PageFactory.initElements(driver, this);
-        General.driver = driver;
+        BasePage.driver = driver;
     }
 
 
