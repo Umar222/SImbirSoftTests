@@ -10,8 +10,10 @@ public class MailAuthPage {
 
     @FindBy(xpath = "//input[@id = \"passp-field-login\"]")
     private WebElement loginField;
+
     @FindBy(xpath = "//input[@id = \"passp-field-passwd\"]")
     private WebElement passwordField;
+
     @FindBy(xpath = "//button[@type = \"submit\"]")
     private WebElement submit;
 
