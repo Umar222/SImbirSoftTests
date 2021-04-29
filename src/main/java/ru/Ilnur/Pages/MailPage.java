@@ -47,7 +47,7 @@ public class MailPage {
     }
 
     @Step("Ввожу адрес и тему письма")
-    public void addMailAddress(String email, String theme) {
+    public void inputMailAddress(String email, String theme) {
         emailField.sendKeys(email);
         emailThemeField.sendKeys(theme);
     }
