@@ -13,7 +13,6 @@ import ru.Ilnur.Pages.MailPage;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class YandexMailTests {
 
@@ -49,12 +48,11 @@ public class YandexMailTests {
         assertEquals(mailPage.modalTitle().getText(), "Письмо отправлено", "Текст не отобразился");
         driver.navigate().refresh();
         int count2 = mailPage.mailCount("Simbirsoft theme");
-        assertTrue(count2 > count1, "Новое письмо не создалось");
+        assertEquals(count1 + 1, count2, "Новое письмо не создалось");
     }
 
     @AfterAll
     public static void tearDown() {
         driver.quit();
     }
-
 }
