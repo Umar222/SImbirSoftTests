@@ -5,12 +5,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.Ilnur.Pages.CalculatorPage;
 import ru.Ilnur.Pages.SearchPage;
 
@@ -27,11 +23,16 @@ public class CalculatorTests {
 
     @BeforeAll
     public static void setUp() {
+        System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
         calculatorPage = new CalculatorPage(driver);
         searchPage = new SearchPage(driver);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(ConfProperties.getProperty("commonPage"));
+        openCalculator();
+    }
+
+    public static void openCalculator() {
         searchPage.Field("Калькулятор");
         searchPage.search();
     }
@@ -62,8 +63,6 @@ public class CalculatorTests {
         calculatorPage.equallyB();
         assertEquals(calculatorPage.historyField(), "(1 + 2) × 3 - 40 ÷ 5 =");
         assertEquals(calculatorPage.numberFieldB(), "1");
-
-
     }
 
     @Tag("negative")
@@ -78,7 +77,6 @@ public class CalculatorTests {
         assertEquals(calculatorPage.numberFieldB(), "Infinity");
     }
 
-
     @Tag("negative")
     @Description("Проверка отображения сообщения с ошибкой")
     @Test
@@ -87,8 +85,5 @@ public class CalculatorTests {
         calculatorPage.equallyB();
         assertEquals(calculatorPage.historyField(), "sin() =");
         assertEquals(calculatorPage.numberFieldB(), "Error");
-
     }
-
-
 }
