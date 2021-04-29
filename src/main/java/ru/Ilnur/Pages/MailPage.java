@@ -76,6 +76,4 @@ public class MailPage {
         }
         return count;
     }
-
-
 }

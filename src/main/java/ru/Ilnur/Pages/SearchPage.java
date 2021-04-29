@@ -30,6 +30,4 @@ public class SearchPage {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-
-
 }

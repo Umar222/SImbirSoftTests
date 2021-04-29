@@ -14,7 +14,6 @@ public class BasePage {
         BasePage.driver = driver;
     }
 
-
     public static void switchNewPage(int pageNumber) {
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(pageNumber));

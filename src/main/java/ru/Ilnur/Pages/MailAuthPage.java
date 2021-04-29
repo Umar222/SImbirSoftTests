@@ -29,9 +29,4 @@ public class MailAuthPage {
         passwordField.sendKeys(password);
         submit.click();
     }
-
-
-
-
-
 }
