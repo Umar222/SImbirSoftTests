@@ -14,20 +14,25 @@ public class SearchPage {
     @FindBy(name = "btnK")
     private WebElement searchButton;
 
+    public WebDriver driver;
+
+    public SearchPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+        this.driver = driver;
+    }
+
     @Step("Ввожу текст в поле поиска")
-    public void Field(String text){
+    public void field(String text) {
         searchField.sendKeys(text);
     }
 
     @Step("Кликаю Поиск")
-    public void search(){
+    public void search() {
         searchButton.click();
     }
 
-    public WebDriver driver;
-
-    public SearchPage(WebDriver driver){
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
+    public void inputSearchField(String text) {
+        field(text);
+        search();
     }
 }
