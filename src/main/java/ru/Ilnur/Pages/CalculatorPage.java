@@ -7,12 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class CalculatorPage {
-    public WebDriver driver;
-
-    public CalculatorPage(WebDriver driver){
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
 
     @FindBy(css = "td:nth-child(1) > .A2W7l > .MEdqYd")
     private WebElement leftParenthesis;
@@ -65,77 +59,80 @@ public class CalculatorPage {
     @FindBy(css = ".UUhRt")
     private WebElement equally;
 
+    public WebDriver driver;
 
-    public void equallyB(){
+    public CalculatorPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+        this.driver = driver;
+    }
+
+    public void equallyB() {
         equally.click();
     }
 
-    public void leftParenthesisB(){
+    public void leftParenthesisB() {
         leftParenthesis.click();
     }
 
-    public void One(){
+    public void One() {
         buttonOne.click();
     }
 
-    public void plusB(){
+    public void plusB() {
         plus.click();
     }
 
-    public void Two(){
+    public void Two() {
         buttonTwo.click();
     }
 
-    public void RightParenthesisB(){
+    public void RightParenthesisB() {
         RightParenthesis.click();
     }
 
-    public void multiplyB(){
+    public void multiplyB() {
         multiply.click();
     }
 
-    public void Three(){
+    public void Three() {
         buttonThree.click();
     }
 
-    public void minusB(){
+    public void minusB() {
         minus.click();
     }
 
-    public void Fore(){
+    public void Fore() {
         buttonFore.click();
     }
 
-    public void Zero(){
+    public void Zero() {
         buttonZero.click();
     }
 
-    public void divideB(){
+    public void divideB() {
         divide.click();
     }
 
-    public void Five(){
+    public void Five() {
         buttonFive.click();
     }
 
-    public void Six(){
+    public void Six() {
         buttonSix.click();
     }
 
-    public void Sin(){
+    public void Sin() {
         buttonSin.click();
     }
 
-    public String historyField(){
+    public String historyField() {
         String historyField = history.getText();
         return historyField;
-
     }
 
-    public String numberFieldB(){
+    public String numberFieldB() {
         String field = numberField.getText();
         return field;
     }
-
-
 }
