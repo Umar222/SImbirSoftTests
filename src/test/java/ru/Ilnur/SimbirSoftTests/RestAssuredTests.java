@@ -24,7 +24,26 @@ public class RestAssuredTests {
                 .get("/api/users")
                 .then()
                 .statusCode(200)
-                .body("data.find{it.id = 6}.email", equalTo("george.bluth@reqres.in"));
+                .body("data.find{it.last_name = \"Bluth\"}.email", equalTo("george.bluth@reqres.in"));
+//                .extract().response().prettyPrint();
     }
+
+
+    @Description("Проверить что у пользователя Michael Lawson e-mail  michael.lawson@reqres")
+    @Test
+    public void checkMichaelLawsonCorrectEmail() {
+        given().contentType(ContentType.JSON)
+                .queryParam("page","2")
+                .when()
+                .get("/api/users")
+                .then()
+                .statusCode(200)
+                .body("data.find{it.last_name = \"Lawson\"}.email", equalTo("michael.lawson@reqres.in"));
+//                .extract().response().prettyPrint();
+    }
+
+
+
+
 
 }
