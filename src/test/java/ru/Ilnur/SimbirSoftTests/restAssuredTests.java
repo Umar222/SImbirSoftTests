@@ -24,6 +24,6 @@ public class restAssuredTests {
                 .get("/api/users")
                 .then()
                 .statusCode(200)
-                .body("data.find{it.id = 6}.email", equalTo("george.bluth@reqres.in"));
+                .body("data.find{it.last_name = \"Bluth\"}.email", equalTo("george.bluth@reqres.in"));
     }
 }
