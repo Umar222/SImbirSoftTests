@@ -32,7 +32,7 @@ public class YandexMailTests {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://yandex.ru/");
         mailPage.clickEnter();
-        mailAuthPage.authMail("testovumar@yandex.ru", "qwertY116");
+        mailAuthPage.authMail("testovumar@yandex.ru", "190859ii");
         mailPage.openMailWindow();
     }
 
